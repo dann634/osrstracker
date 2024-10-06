@@ -43,14 +43,15 @@ class MainWindow(QMainWindow):
         self.main_grid.setContentsMargins(0, 0, 0, 0)
 
         #Init Left Navigation
-        self.navigation_panel = home.NavigationPanel()
+        navigation_panel = home.NavigationPanel()
 
-        self.navigation_container = QWidget()
-        self.navigation_container.setObjectName("navigation_panel")
-        self.navigation_container.setLayout(self.navigation_panel)
+        navigation_container = QWidget()
+        navigation_container.setObjectName("navigation_panel")
+        navigation_container.setLayout(navigation_panel)
 
-        self.main_grid.addWidget(self.navigation_container, 0, 0)
+        self.main_grid.addWidget(navigation_container, 0, 0)
 
+        #Home Scene
         home_container = QWidget()
         home_container.setLayout(home.Home())
         home_container.setObjectName("home_vbox")
