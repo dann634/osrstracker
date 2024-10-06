@@ -1,0 +1,39 @@
+QLabel {
+    font-size: 40px;
+    font-weight: bold;
+    qproperty-alignment: AlignCenter;
+    padding-top: 40px;
+    padding-bottom: 60px;
+    color: #ECDFCC;
+}
+
+QPushButton {
+    min-width: 80px;
+    min-height: auto;
+    height: 50px;
+    background-color: #697565;
+    border-radius: 4px;
+}
+
+QPushButton:hover {
+    background-color: #495246;
+}
+
+QLineEdit {
+    height: 50px;
+    font-size: 24px;
+    margin-left: 60px;
+    margin-right: 60px;
+    border-radius: 4px;
+    background-color: #3C3D37;
+    color: #ECDFCC;
+    padding-left: 10px;
+}
+
+QWidget#navigation_panel {
+    background-color: #3C3D37;
+}
+
+QWidget#home_vbox {
+    background-color: #1E201E;
+}
