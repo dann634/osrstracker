@@ -43,7 +43,7 @@ class MainWindow(QMainWindow):
         self.main_grid.setContentsMargins(0, 0, 0, 0)
 
         #Init Left Navigation
-        self.navigation_panel = QVBoxLayout()
+        self.navigation_panel = home.NavigationPanel()
 
         self.navigation_container = QWidget()
         self.navigation_container.setObjectName("navigation_panel")
@@ -56,24 +56,6 @@ class MainWindow(QMainWindow):
         home_container.setObjectName("home_vbox")
         self.main_grid.addWidget(home_container, 0, 1)
 
-        self.initNavPane()
-
-
-
-    def initNavPane(self):
-        home_button = QPushButton()
-        home_button.setIcon(QIcon("resources/images/house.png"))
-
-        search_button = QPushButton()
-        search_button.setIcon(QIcon("resources/images/search.png"))
-
-        items_button = QPushButton()
-        items_button.setIcon(QIcon("resources/images/sword.png"))
-
-        self.navigation_panel.addWidget(home_button)
-        self.navigation_panel.addWidget(search_button)
-        self.navigation_panel.addWidget(items_button)
-        self.navigation_panel.addStretch() #Pushes items to top
 
 
 
