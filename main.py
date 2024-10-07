@@ -1,11 +1,12 @@
 import sys
 
 from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import QApplication, QMainWindow, QGridLayout, QVBoxLayout, QWidget, QLabel, QPushButton, \
-    QLineEdit
+from PyQt5.QtWidgets import QApplication, QMainWindow, QGridLayout, QWidget
 
-from pages import home, search
+import api_connection
+from pages import home, items
 
+apiConnection = api_connection.APIConnection()
 
 class MainWindow(QMainWindow):
 
@@ -53,11 +54,15 @@ class MainWindow(QMainWindow):
 
         #Home Scene
         home_container = QWidget()
-        home_container.setLayout(home.Home())
+        home_obj = home.Home()
+        home_container.setLayout(home_obj)
         home_container.setObjectName("home_vbox")
         self.main_grid.addWidget(home_container, 0, 1)
 
-
+        #hot items
+        hot_container_list = home_obj.get_hot_items()
+        for item in hot_container_list:
+            item.setObjectName("hot_container")
 
 
 def main():

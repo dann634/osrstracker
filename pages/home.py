@@ -1,5 +1,6 @@
 from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import QVBoxLayout, QWidget, QLabel, QLineEdit, QPushButton
+from PyQt5.QtWidgets import QVBoxLayout, QWidget, QLabel, QLineEdit, QPushButton, QGridLayout
+from pages import items
 
 
 class Home(QVBoxLayout):
@@ -9,14 +10,33 @@ class Home(QVBoxLayout):
         
         # Init Home Page
 
-        # self.setStyleSheet(open("resources/stylesheets/home.css").read())
+        self.title_label = QLabel("OSRS Tracker")
+        self.title_label.setObjectName("title")
+        self.search_box = QLineEdit("Search")
+        self.hot_label = QLabel("🔥Hot Items🔥")
+        self.hot_label.setObjectName("hot_title")
 
-        label = QLabel("OSRS Tracker")
-        search_box = QLineEdit("Search")
+        self.hot_items_grid = QGridLayout()
+        hot_items = ["Bronze sword", "Bronze pickaxe", "Steel dagger", "Longbow"]
+        self.hot_item_containers = []
+        for item in hot_items:
+            self.hot_item_containers.append(items.ItemContainer(item))
 
-        self.addWidget(label)
-        self.addWidget(search_box)
+        self.hot_items_grid.addWidget(self.hot_item_containers[0], 0, 0)
+        self.hot_items_grid.addWidget(self.hot_item_containers[1], 1, 0)
+        self.hot_items_grid.addWidget(self.hot_item_containers[2], 0, 1)
+        self.hot_items_grid.addWidget(self.hot_item_containers[3], 1, 1)
+
+
+        self.addWidget(self.title_label)
+        self.addWidget(self.search_box)
+        self.addWidget(self.hot_label)
+        self.addLayout(self.hot_items_grid)
         self.addStretch()
+
+    def get_hot_items(self):
+        return self.hot_item_containers
+
 
 
 class NavigationPanel(QVBoxLayout):

@@ -1,10 +1,19 @@
 QLabel {
-    font-size: 40px;
     font-weight: bold;
     qproperty-alignment: AlignCenter;
+    color: #ECDFCC;
+}
+
+QLabel#title {
+    font-size: 40px;
     padding-top: 40px;
     padding-bottom: 60px;
-    color: #ECDFCC;
+}
+
+QLabel#hot_title {
+    font-size: 40px;
+    padding-top: 40px;
+    padding-bottom: 60px;
 }
 
 QPushButton {
@@ -36,4 +45,9 @@ QWidget#navigation_panel {
 
 QWidget#home_vbox {
     background-color: #1E201E;
+}
+
+QWidget#hot_container {
+    border-radius: 5px;
+    background-color: #ECDFCC;
 }
