@@ -11,7 +11,6 @@ class APIConnection():
         self.items = self.read_items_from_json()
 
 
-
     def read_items_from_json(self):
         with open("resources/items.json") as json_file:
             return json.loads(json_file.read())

@@ -49,5 +49,15 @@ QWidget#home_vbox {
 
 QWidget#hot_container {
     border-radius: 5px;
-    background-color: #ECDFCC;
+    background-color: #697565;
+    border-width: 2px;
+    max-width: 200px;
+}
+
+QLabel#item_name {
+    min-width: 140px;
+}
+
+QLabel#img {
+    padding-left: 5px;
 }

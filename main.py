@@ -44,25 +44,12 @@ class MainWindow(QMainWindow):
         self.main_grid.setContentsMargins(0, 0, 0, 0)
 
         #Init Left Navigation
-        navigation_panel = home.NavigationPanel()
-
-        navigation_container = QWidget()
-        navigation_container.setObjectName("navigation_panel")
-        navigation_container.setLayout(navigation_panel)
-
-        self.main_grid.addWidget(navigation_container, 0, 0)
+        self.main_grid.addWidget(home.NavigationPanel(), 0, 0)
 
         #Home Scene
-        home_container = QWidget()
         home_obj = home.Home()
-        home_container.setLayout(home_obj)
-        home_container.setObjectName("home_vbox")
-        self.main_grid.addWidget(home_container, 0, 1)
+        self.main_grid.addWidget(home_obj, 0, 1)
 
-        #hot items
-        hot_container_list = home_obj.get_hot_items()
-        for item in hot_container_list:
-            item.setObjectName("hot_container")
 
 
 def main():
