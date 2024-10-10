@@ -1,8 +1,11 @@
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import QVBoxLayout, QWidget, QLabel, QLineEdit, QPushButton, QGridLayout
-from pages import items
+from PyQt5.QtWidgets import QVBoxLayout, QLabel, QLineEdit, QPushButton, QGridLayout
+
+from main import main_grid
+from pages.Item_Container import ItemContainer
 from pages.CustomQWidget import CustomQWidget
+import main
 
 
 class Home(CustomQWidget):
@@ -31,7 +34,7 @@ class Home(CustomQWidget):
         hot_items = ["Bronze sword", "Bronze pickaxe", "Steel dagger", "Longbow"]
         self.hot_item_containers = []
         for item in hot_items:
-            item_container = items.ItemContainer(item)
+            item_container = ItemContainer(item)
             item_container.setObjectName("hot_container")
             self.hot_item_containers.append(item_container)
 
@@ -55,7 +58,7 @@ class Home(CustomQWidget):
 
 
 class NavigationPanel(CustomQWidget):
-    def __init__(self):
+    def __init__(self, swapScene):
         super().__init__()
 
         self.vbox = QVBoxLayout()
@@ -63,15 +66,19 @@ class NavigationPanel(CustomQWidget):
 
         home_button = QPushButton()
         home_button.setIcon(QIcon("resources/images/house.png"))
-
-        search_button = QPushButton()
-        search_button.setIcon(QIcon("resources/images/sword.png"))
+        home_button.clicked.connect(lambda: swapScene("Home")) #Using lambda so we can pass in a value
 
         items_button = QPushButton()
-        items_button.setIcon(QIcon("resources/images/ingots.png"))
+        items_button.setIcon(QIcon("resources/images/sword.png"))
+        items_button.clicked.connect(lambda: swapScene("Items"))
+
+        gold_button = QPushButton()
+        gold_button.setIcon(QIcon("resources/images/ingots.png"))
+        gold_button.clicked.connect(lambda: swapScene("Gold"))
 
         self.vbox.addWidget(home_button)
-        self.vbox.addWidget(search_button)
         self.vbox.addWidget(items_button)
+        self.vbox.addWidget(gold_button)
         self.vbox.addStretch()  # Pushes items to top
         self.setLayout(self.vbox)
+

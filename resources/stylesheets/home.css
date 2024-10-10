@@ -61,3 +61,7 @@ QLabel#item_name {
 QLabel#img {
     padding-left: 5px;
 }
+
+QWidget#CustomQWidget {
+    background-color: #1E201E;
+}

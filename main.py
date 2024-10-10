@@ -7,6 +7,8 @@ import api_connection
 from pages import home, items
 
 apiConnection = api_connection.APIConnection()
+main_grid = QGridLayout()
+
 
 class MainWindow(QMainWindow):
 
@@ -23,6 +25,8 @@ class MainWindow(QMainWindow):
 
         self.setGeometry(window_x, window_y, initial_width, initial_height)
 
+
+
         #set window icon
         self.setWindowIcon(QIcon("resources/images/icon.png"))
 
@@ -37,18 +41,34 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(self.center_widget)
 
         #Init Main Grid Layout Manager
-        self.main_grid = QGridLayout()
-        self.center_widget.setLayout(self.main_grid)
+        self.center_widget.setLayout(main_grid)
 
-        self.main_grid.setSpacing(0) #Removes whitespace
-        self.main_grid.setContentsMargins(0, 0, 0, 0)
+        main_grid.setSpacing(0) #Removes whitespace
+        main_grid.setContentsMargins(0, 0, 0, 0)
 
         #Init Left Navigation
-        self.main_grid.addWidget(home.NavigationPanel(), 0, 0)
+        main_grid.addWidget(home.NavigationPanel(self.swapScene), 0, 0)
 
         #Home Scene
-        home_obj = home.Home()
-        self.main_grid.addWidget(home_obj, 0, 1)
+        self.home_scene = home.Home()
+        self.item_scene = items.Items()
+        main_grid.addWidget(self.home_scene, 0, 1)
+        main_grid.addWidget(self.item_scene, 0, 1)
+
+        self.item_scene.hide()
+
+
+
+    def swapScene(self, scene):
+        self.home_scene.hide()
+        self.item_scene.hide()
+        match scene:
+            case "Home":
+                self.home_scene.show()
+            case "Items":
+                self.item_scene.show()
+            case "Gold":
+                pass
 
 
 

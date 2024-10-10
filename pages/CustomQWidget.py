@@ -6,6 +6,7 @@ class CustomQWidget(QWidget):
 
     def __init__(self):
         super().__init__()
+        self.setObjectName("CustomQWidget")
 
     def paintEvent(self, event):
         opt = QStyleOption()
